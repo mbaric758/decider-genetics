@@ -1,0 +1,15 @@
+row:
+    map:
+        columns:
+            - alteration
+        to_subject: alteration
+transformers:
+    - replace:
+        columns:
+            - treatment
+        to_object: drug
+        via_relation: alteration_biomarker_for_drug
+        substitute: "_"
+
+metadata:
+        - name: oncokb

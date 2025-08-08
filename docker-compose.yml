@@ -48,7 +48,7 @@ services:
         condition: service_completed_successfully
   
   app:
-    image: biocypher/biochatter-light:0.6.13
+    image: biocypher/biochatter-light:0.9.0
     container_name: app
     ports:
       - "8501:8501"
@@ -58,7 +58,7 @@ services:
       import:
         condition: service_completed_successfully
     environment:
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GOOGLE_API_KEY={INSERT API KEY}
       - DOCKER_COMPOSE=true
       - CHAT_TAB=false
       - PROMPT_ENGINEERING_TAB=false

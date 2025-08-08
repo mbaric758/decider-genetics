@@ -1,14 +1,14 @@
 FROM docker.io/andimajore/biocyper_base:python3.10 as setup-stage
 
 #Sets default for BIOCYPHER_CONFIG
-ARG BIOCYPHER_CONFIG=config/biocypher_docker_config.yaml
+ARG BIOCYPHER_CONFIG=JOBIM_example/biocypher_config.yaml
 ENV USED_BIOCYPHER_CONFIG=$BIOCYPHER_CONFIG
 
 WORKDIR /usr/app/
 COPY pyproject.toml poetry.lock ./
 RUN poetry config virtualenvs.create false && poetry install
 COPY . ./
-RUN cp ${USED_BIOCYPHER_CONFIG} config/biocypher_config.yaml
+RUN cp ${USED_BIOCYPHER_CONFIG} JOBIM_example/biocypher_config.yaml
 RUN python3 create_knowledge_graph.py
 
 FROM docker.io/neo4j:4.4-enterprise as deploy-stage

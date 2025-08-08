@@ -1,0 +1,140 @@
+########################
+# NODES
+########################
+
+# Defined in alphabetical order
+
+alteration:
+    is_a: sequence variant
+    represented_as: node
+    label_in_input: alteration
+    properties:
+        mutation_effect_description: str
+        name: str
+        variant_summary: str
+        tumor_type_summary: str
+
+
+disease:
+    represented_as: node
+    label_in_input: disease
+    properties:
+        name: str
+
+drug:
+    represented_as: node
+    label_in_input: drug
+    properties:
+        name: str
+
+gene:
+    represented_as: node
+    label_in_input: gene
+    properties:
+        name: str
+
+patient:
+    represented_as: node
+    label_in_input: patient
+    synonym_for: case
+    properties:
+        name: str
+
+sample:
+    is_a: material sample
+    respresented_as: node
+    label_in_input: sample
+    properties:
+        name: str
+
+functional outcome:
+    is_a: outcome
+    represented_as: node
+    label_in_input: functional_outcome
+    properties:
+        name: str
+
+########################
+# EDGES
+########################
+
+## CAUSAL LINKS
+## Everything that derivates from the "causes" link type.
+## Comprises both real causes and ownership ("carries").
+
+### CARRIES
+
+# To allow queries for patient carrying samples, and samples carrying alterations,
+# without mixing with "effects" causes.
+carries:
+    is_a: causes
+    represented_as: edge
+    label_in_input: carries
+    properties:
+        name: str
+
+patient carries sample:
+    is_a: carries
+    represented_as: edge
+    label_in_input: patient_carries_sample
+    source: patient
+    target: sample
+    properties:
+        name: str
+
+sample carries alteration:
+    is_a: carries
+    represented_as: edge
+    label_in_input: sample_carries_alteration
+    source: sample
+    target: alteration
+    properties:
+        name: str
+
+### CAUSES
+
+alteration causes functional outcome:
+    is_a: causes
+    represented_as: edg
+    label_in_input: alteration_causes_functional_outcome
+    source: alteration
+    target: functional outcome
+    properties:
+        name: str
+
+### BIOMARKER
+
+# In some databases, such as OncoKB, drugs are associated with variants
+# as predictive markers for treatment response,
+# based on clinical evidence categorized by evidence levels.
+
+alteration biomarker for drug:
+    is_a: biomarker for
+    represented_as: edge
+    label_in_input: alteration_biomarker_for_drug
+    source: alteration
+    target: drug
+    properties:
+        name: str
+
+## METADATA
+
+patient has treatment:
+    is_a: association
+    represented_as: edge
+    label_in_input: patient_has_treatment
+    source: patient
+    target: treatment
+    properties:
+        name: str
+
+### AFFECTS
+
+alteration affects gene:
+    is_a: affects
+    represented_as: edge
+    label_in_input: alteration_affects_gene
+    source: alteration
+    target: gene
+    properties:
+        name: str

@@ -9,8 +9,9 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-biocypher = "^0.5.42"
+python = ">=3.10,<4.0"
+biocypher = "^0.10.1"
+ontoweaver = "^0.2.5"
 
 [build-system]
 requires = ["poetry-core"]

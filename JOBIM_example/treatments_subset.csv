@@ -1,0 +1,47 @@
+alteration,treatment
+2_snv,Olaparib;
+2_snv,Olaparib;Bevacizumab;
+2_snv,Rucaparib;
+2_snv,Niraparib;
+2_snv,Talazoparib;
+2_snv,Olaparib;Abiraterone;Prednisone;
+2_snv,Talazoparib;Enzalutamide;
+2_snv,Olaparib(PARP inhibitor)
+2_snv,Rucaparib(PARP inhibitor)
+2_snv,Niraparib(PARP inhibitor)
+2_snv,Olaparib(PARP inhibitor) + Bevacizumab(VEGF mAb inhibitor)
+2_snv,PARP inhibitor + Chemotherapys
+2_snv,PARP inhibitors
+2_snv,WEE1 inhibitors
+2_snv,Platinum Agent(Chemotherapy)
+2_snv,Olaparib
+2_snv,Olaparib
+2_snv,Rucaparib
+2_snv,Olaparib
+2_snv,Rucaparib
+2_snv,Rucaparib
+5_snv,HSP90 inhibitors
+5_snv,WEE1 inhibitors
+5_snv,"Pazopanib,Vorinostat"
+5_snv,"Cisplatin,Carboplatin"
+5_snv,"Cisplatin,Carboplatin"
+4_snv,HSP90 inhibitors
+4_snv,WEE1 inhibitors
+4_snv,"Pazopanib,Vorinostat"
+4_snv,"Cisplatin,Carboplatin"
+4_snv,"Cisplatin,Carboplatin"
+7_snv,HSP90 inhibitors
+7_snv,WEE1 inhibitors
+7_snv,"Pazopanib,Vorinostat"
+7_snv,"Cisplatin,Carboplatin"
+7_snv,"Cisplatin,Carboplatin"
+10_snv,HSP90 inhibitors
+10_snv,WEE1 inhibitors
+10_snv,"Pazopanib,Vorinostat"
+10_snv,"Cisplatin,Carboplatin"
+10_snv,"Cisplatin,Carboplatin"
+6_snv,CDK2 inhibitors
+CCNE1:AMPLIFICATION,Lunresertib;Camonsertib;
+CCNE1:AMPLIFICATION,Lunresertib;
+CCNE1:AMPLIFICATION,BLU-222;
+CCNE1:AMPLIFICATION,CDK2 inhibitors
