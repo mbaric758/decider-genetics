@@ -12,4 +12,4 @@ transformers:
         substitute: "_"
 
 metadata:
-        - name: oncokb
+        - database_of_origin: oncokb

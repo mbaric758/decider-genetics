@@ -10,49 +10,51 @@ alteration:
     label_in_input: alteration
     properties:
         mutation_effect_description: str
-        name: str
+        database_of_origin: str
         variant_summary: str
         tumor_type_summary: str
+        alteration_type: str
 
 
 disease:
     represented_as: node
     label_in_input: disease
     properties:
-        name: str
+        database_of_origin: str
 
 drug:
     represented_as: node
     label_in_input: drug
     properties:
-        name: str
+        database_of_origin: str
 
 gene:
     represented_as: node
     label_in_input: gene
     properties:
-        name: str
+        database_of_origin: str
 
 patient:
     represented_as: node
     label_in_input: patient
     synonym_for: case
     properties:
-        name: str
+        database_of_origin: str
+        patient_id: str
 
 sample:
     is_a: material sample
-    respresented_as: node
+    represented_as: node
     label_in_input: sample
     properties:
-        name: str
+        database_of_origin: str
 
 functional outcome:
     is_a: outcome
     represented_as: node
     label_in_input: functional_outcome
     properties:
-        name: str
+        database_of_origin: str
 
 ########################
 # EDGES
@@ -71,7 +73,7 @@ carries:
     represented_as: edge
     label_in_input: carries
     properties:
-        name: str
+        database_of_origin: str
 
 patient carries sample:
     is_a: carries
@@ -80,7 +82,7 @@ patient carries sample:
     source: patient
     target: sample
     properties:
-        name: str
+        database_of_origin: str
 
 sample carries alteration:
     is_a: carries
@@ -89,7 +91,7 @@ sample carries alteration:
     source: sample
     target: alteration
     properties:
-        name: str
+        database_of_origin: str
 
 ### CAUSES
 
@@ -100,7 +102,7 @@ alteration causes functional outcome:
     source: alteration
     target: functional outcome
     properties:
-        name: str
+        database_of_origin: str
 
 ### BIOMARKER
 
@@ -115,7 +117,7 @@ alteration biomarker for drug:
     source: alteration
     target: drug
     properties:
-        name: str
+        database_of_origin: str
 
 ## METADATA
 
@@ -126,7 +128,7 @@ patient has treatment:
     source: patient
     target: treatment
     properties:
-        name: str
+        database_of_origin: str
 
 ### AFFECTS
 
@@ -137,4 +139,4 @@ alteration affects gene:
     source: alteration
     target: gene
     properties:
-        name: str
+        database_of_origin: str

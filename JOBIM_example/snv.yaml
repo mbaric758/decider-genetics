@@ -10,11 +10,20 @@ transformers:
         to_object: sample
         via_relation: patient_carries_sample
     - map:
+        column: patient_id
+        to_property: patient_id
+        for_object: patient
+    - map:
         columns:
             - alteration
         from_subject: sample
         to_object: alteration
         via_relation: sample_carries_alteration
+    - map:
+        columns:
+          - alteration
+        to_property: alteration_type
+        for_object: alteration
     - map:
         columns:
             - hugoSymbol
@@ -38,4 +47,4 @@ transformers:
           via_relation: alteration_causes_functional_outcome
 
 metadata:
-        - name: single_nucleotide_variants
+        - database_of_origin: single_nucleotide_variants

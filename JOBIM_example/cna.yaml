@@ -9,6 +9,10 @@ transformers:
             - sample_id
         to_object: sample
         via_relation: patient_carries_sample
+    - map:
+        column: patient_id
+        to_property: patient_id
+        for_object: patient
     - cat_format:
         columns:
             - hugoSymbol
@@ -17,6 +21,14 @@ transformers:
         to_object: alteration
         format_string: "{hugoSymbol}:{alteration}"
         via_relation: sample_carries_alteration
+    - cat_format:
+        columns:
+          - hugoSymbol
+          - alteration
+        from_subject: sample
+        to_property: alteration_type
+        format_string: "{hugoSymbol}:{alteration}"
+        for_object: alteration
     - map:
         columns:
             - hugoSymbol
@@ -39,4 +51,4 @@ transformers:
               - alteration
 
 metadata:
-    - name: copy_number_alterations
+    - database_of_origin: copy_number_alterations
