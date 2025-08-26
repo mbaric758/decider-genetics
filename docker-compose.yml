@@ -1,17 +1,18 @@
-version: '3.3'
-
 services:
 
+  # Step 1: Build the knowledge graph.
   build:
     image: docker.io/slobentanzer/biocypher-base:1.0.0
     container_name: build
     volumes:
-      - biocypher_neo4j_volume:/usr/app/data
-      - .:/src/
+      - biocypher_neo4j_volume:/usr/app/data # Create a volume for Neo4j data location.
+      - .:/src/ # Mount the current directory to /src in the container.
+    # Run the build script to create the import files.
     command:
       - /bin/bash
       - /src/scripts/build.sh
 
+  # Step 2: Import the data into Neo4j.
   import:
     image: neo4j:4.4-enterprise
     container_name: import
@@ -20,8 +21,9 @@ services:
       NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
       FILL_DB_ON_STARTUP: "yes"
     volumes:
-      - biocypher_neo4j_volume:/data
-      - ./scripts/import.sh:/scripts/import.sh
+      - biocypher_neo4j_volume:/data # Use the same volume for Neo4j data.
+      - ./scripts/import.sh:/scripts/import.sh # Mount the import script.
+    # Run the import script to load data into Neo4j. FIXME: There seems to be a chache issue here, with multiple edges appearing unless the container is removed and recreated.
     command:
       - /bin/bash
       - /scripts/import.sh
@@ -29,6 +31,7 @@ services:
       build:
         condition: service_completed_successfully
 
+  # Step 3: Deploy the Neo4j database to localhost and for the next container.
   deploy:
     image: neo4j:4.4-enterprise
     container_name: deploy
@@ -58,7 +61,7 @@ services:
       import:
         condition: service_completed_successfully
     environment:
-      - GOOGLE_API_KEY={INSERT API KEY}
+      - GOOGLE_API_KEY=
       - DOCKER_COMPOSE=true
       - CHAT_TAB=false
       - PROMPT_ENGINEERING_TAB=false
